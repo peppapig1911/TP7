@@ -13,5 +13,6 @@ public :
   Point();
   //constructeur prenant 2 paramètres réels
   Point(int a, int b);
-  //
+  //constructeur de recopie
+  Point(Point const &p);
 };
