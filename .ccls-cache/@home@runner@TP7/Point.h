@@ -1,4 +1,5 @@
 #include <iostream>
+#pragma once 
 using namespace std;
 
 template<typename P> class Point{
@@ -9,9 +10,9 @@ private :
   P y;
 
 public : 
-  void translater(P dx, P dy){
-    x+=dx;
-    y+=dy;
+  void translation(P dx, P dy){
+    this->x=x+dx;
+    this->y=y+dy;
   };
   //constructeur initialise un point à l'origine 
   Point(){
@@ -46,6 +47,13 @@ public :
   friend ostream& operator<<(ostream& s,Point const& p) {
     s << p.x << ", " << p.y;
   return s;
-  }
+  };
 
+  //surcharge de l'opérateur "+="
+  Point& operator+=(Point<int> const& p) {
+    x+=p.x;
+    y+=p.y;
+    return *this;
+  };
+  
 };
