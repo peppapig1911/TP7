@@ -1,22 +1,22 @@
 #include <iostream>
 using namespace std;
 
-class Point{
+template<typename P> class Point{
 
 private :
 
-  double x;
-  double y;
+  P x;
+  P y;
 
 public : 
-  void translater(Point p){
-    x += p.x;
-    y += p.y;
+  void translater(P dx, P dy){
+    x+=dx;
+    y+=dy;
   };
   //constructeur initialise un point à l'origine 
   Point(){
-    x = 0;
-    y = 0;
+    x=0;
+    y=0;
   };
   //constructeur prenant 2 paramètres réels
   Point(int a, int b){
@@ -25,15 +25,18 @@ public :
   };
   //constructeur de recopie
   Point(Point const &p){
-    x = p.x;
-    y = p.y;
+    this->x = p.x;
+    this->y = p.y;
   };
   //accesseur 
-  Point getCoordonnees(){
-    return Point(x,y);
+  P getCoordonneesX() const{
+    return this->x;
+  };
+  P getCoordonneesY() const{
+    return this->y;
   };
   //mutateur
-  void SetCoordonnees(int x,int y){
+  void SetCoordonnees(P x,P y){
     this->x = x;
     this->y = y;
   };
@@ -44,12 +47,5 @@ public :
     s << p.x << ", " << p.y;
   return s;
   }
-
-  /*surcharge de l'opérateur +=
-  Point& operator+=(const Point& autre) {
-      x += autre.x;
-      y += autre.y;
-      return *this;
-  }*/
 
 };
